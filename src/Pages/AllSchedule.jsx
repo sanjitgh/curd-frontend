@@ -4,12 +4,16 @@ import ScheduleTable from "../component/ScheduleTable";
 
 const AllSchedule = () => {
   const data = useLoaderData();
-  const [scheduleData, setScheduleData] = useState(data)
+  const [scheduleData, setScheduleData] = useState(data);
 
+  const [search, setSearch] = useState("");
+
+  console.log(search);
   return (
     <div className="container mx-auto px-3 py-14">
       <div className="text-center mb-10">
         <input
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           name="search"
           placeholder="Secrch"

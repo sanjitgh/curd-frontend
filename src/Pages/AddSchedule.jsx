@@ -9,11 +9,10 @@ const AddSchedule = () => {
     const convertTo12HourFormat = (time) => {
       const [hours, minutes] = time.split(":");
       const period = hours >= 12 ? "PM" : "AM";
-      const formattedHours = hours % 12 || 12; 
+      const formattedHours = hours % 12 || 12;
       return `${formattedHours}:${minutes} ${period}`;
     };
 
-    
     const form = e.target;
     const title = form.title.value;
     const day = form.day.value;
@@ -21,31 +20,28 @@ const AddSchedule = () => {
     const time = form.time.value;
     const formattedTime = convertTo12HourFormat(time);
 
-    const data = { title, day, week, formattedTime };
+    const data = { title, day, week, formattedTime, isComplete: false };
 
-
-    fetch('http://localhost:5000/schedule', {
-        method: 'POST',
-        headers:{
-            'content-type':'application/json'
-        },
-        body: JSON.stringify(data)
+    fetch("http://localhost:5000/schedule", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.insertedId){
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Successfully Schedule Added.",
-          showConfirmButton: false,
-          timer: 3000
-        });
-      }
-
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Successfully Schedule Added.",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      });
   };
-
 
   return (
     <div className="bg-slate-200">
