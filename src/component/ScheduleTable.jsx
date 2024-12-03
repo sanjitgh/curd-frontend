@@ -19,7 +19,7 @@ const ScheduleTable = ({ data, idx, scheduleData, setScheduleData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/schedule/${id}`, {
+        fetch(`https://gym-ruby-ten.vercel.app/schedule/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -41,7 +41,7 @@ const ScheduleTable = ({ data, idx, scheduleData, setScheduleData }) => {
   };
 
   const handelUpdateStatus = (id) => {
-    fetch(`http://localhost:5000/status/${id}`, {
+    fetch(`https://gym-ruby-ten.vercel.app/status/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

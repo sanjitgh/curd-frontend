@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import ScheduleTable from "../component/ScheduleTable";
 
 const AllSchedule = () => {
   const data = useLoaderData();
-  const [scheduleData, setScheduleData] = useState(data);
 
   const [search, setSearch] = useState("");
 
-  console.log(search);
+  const [scheduleData, setScheduleData] = useState(data);
+
+  useEffect(() => {
+    fetch(`https://gym-ruby-ten.vercel.app/schedule?searchParams=${search}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setScheduleData(data);
+      });
+  }, [search]);
+
   return (
     <div className="container mx-auto px-3 py-14">
       <div className="text-center mb-10">
@@ -18,7 +26,6 @@ const AllSchedule = () => {
           name="search"
           placeholder="Secrch"
           className="input input-bordered w-[300px] mx-auto"
-          required
         />
       </div>
       {/* table */}

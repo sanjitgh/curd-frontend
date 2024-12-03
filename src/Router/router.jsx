@@ -23,13 +23,13 @@ const router = createBrowserRouter([
       {
         path: "/allschedule",
         element: <AllSchedule></AllSchedule>,
-        loader: () => fetch("http://localhost:5000/schedule"),
+        loader: () => fetch("https://gym-ruby-ten.vercel.app/schedule"),
       },
       {
         path: "/updateschedule/:id",
         element: <UpdateSchedule></UpdateSchedule>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/schedule/${params.id}`),
+          fetch(`https://gym-ruby-ten.vercel.app/schedule/${params.id}`),
       },
       {
         path: "/signup",

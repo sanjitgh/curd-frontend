@@ -22,7 +22,7 @@ const AddSchedule = () => {
 
     const data = { title, day, week, formattedTime, isComplete: false };
 
-    fetch("http://localhost:5000/schedule", {
+    fetch("https://gym-ruby-ten.vercel.app/schedule", {
       method: "POST",
       headers: {
         "content-type": "application/json",

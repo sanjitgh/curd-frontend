@@ -24,7 +24,7 @@ const UpdateSchedule = () => {
     const formattedTime = convertTo12HourFormat(time);
 
     const data = { title, day, week, formattedTime };
-    fetch(`http://localhost:5000/schedule/${_id}`, {
+    fetch(`https://gym-ruby-ten.vercel.app/schedule/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
